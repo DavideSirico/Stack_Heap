@@ -1,6 +1,6 @@
 mi sa che non si fa:
 folder tree alla "tree" del cmd come sidebar
-
+a
 
 
 
