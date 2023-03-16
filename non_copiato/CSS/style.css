@@ -1,3 +1,6 @@
+path {
+    fill: white !important;
+}
 html {
     font-family: "Open Sans", sans-serif;
     color: #333;
@@ -9,9 +12,11 @@ body {
     overflow-x: hidden;
 }
 
-code {
+pre{
     font-family: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
     font-size: 0.875em;
+    background-color: #eaebec;
+    border-radius: 15px;
 }
 
 .left {

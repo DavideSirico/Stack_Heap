@@ -52,23 +52,22 @@
             <h2>Heap and Stack Memory in Java Program</h2>
             <p>Let’s understand the Heap and Stack memory usage with a simple program.</p>
             
-            <pre><code class="language">
-            public class Memory {
-            
-              public static void main(String[] args) { // Line 1
-                int i=1; // Line 2
-                Object obj = new Object(); // Line 3
-                Memory mem = new Memory(); // Line 4
-                mem.foo(obj); // Line 5
-              } // Line 9
-            
-              private void foo(Object param) { // Line 6
-                String str = param.toString(); //// Line 7
-                System.out.println(str);
-              } // Line 8
-            
-            }
-            </code></pre>
+            <pre><code>
+public class Memory {
+
+  public static void main(String[] args) { // Line 1
+    int i=1; // Line 2
+    Object obj = new Object(); // Line 3
+    Memory mem = new Memory(); // Line 4
+    mem.foo(obj); // Line 5
+  } // Line 9
+
+  private void foo(Object param) { // Line 6
+    String str = param.toString(); //// Line 7
+    System.out.println(str);
+  } // Line 8
+
+            }</code></pre>
             The below image shows the Stack and Heap memory with reference to the above program and how they are being used to store primitive, Objects and reference variables.java memory management, java heap space, heap vs stack, java heap, stack vs heapLet’s go through the steps of the execution of the program.
             
             As soon as we run the program, it loads all the Runtime classes into the Heap space. When the main() method is found at line 1, Java Runtime creates stack memory to be used by main() method thread.
