@@ -224,8 +224,9 @@ table thead td {
 .content {
     margin-left: auto;
     margin-right: auto;
-    max-width: 950px;
+    max-width: 850px;
     padding-bottom: 50px;
+    padding-top: 50px;
 }
 
 .content a {
