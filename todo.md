@@ -13,6 +13,7 @@ aumentare il font-size
 
 refactoring di tutto il codice
 togliere la "home page" e mettere direttamente il contenuto tutto nella stessa pagina
+aggiungere immagini
 
 fare tutto più grande e controllare che sia responsive
 
