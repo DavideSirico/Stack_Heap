@@ -1,9 +1,8 @@
-
+import java.util.Random;
 public class Main {
     public static void main(String[] args) {
-        long pid = ProcessHandle.current().pid();
-        System.out.println(pid);
-        int a = 5;
+        Random rand = new Random();
+        int a = rand.nextInt(1);
         int b = 10;
         int somma = somma(a, b);
         System.out.println(somma);

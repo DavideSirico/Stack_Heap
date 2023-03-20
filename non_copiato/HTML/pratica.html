@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html lang="it" class="sidebar-visible">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lo Stack e l'Heap in Java</title>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../CSS/ayu-highlight.css">
+  <link rel="stylesheet" href="../CSS/highlight.css">
+  <link rel="stylesheet" href="../CSS/style.css">
+  <script src="../JS/jQuery.js"></script>
+  <script src="../JS/highlight.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  <!-- Custom theme -->
+</head>
+
+<body class="light">
+  <nav id="sidebar" class="sidebar">
+    <ol class="chapter">
+      <li class="affix"><a href="../index.html">Home</a></li>
+      <li><a href="../HTML/teoria.html" class="active"><strong>1.</strong> Teoria</a></li>
+      <li>
+        <ol class="section">
+          <li><a href="../HTML/teoria.html#Stack"><strong>1.1.</strong> Stack</a></li> <!-- ci mettiamo gli id dei paragrafi-->
+          <li><a href="../HTML/teoria.html#Heap"><strong>1.2.</strong> Heap</a></li>
+        </ol>
+      </li>
+      <li><a href="../HTML/pratica.html"><strong>2.</strong> Pratica</a></li>
+      <li><a href="../HTML/credits.html"><strong>3.</strong> Credits</a></li>
+    </ol>
+    <div class="container">
+      <div class="fotter">
+        <button id="theme-toggle" class="icon-button" type="button" onclick="changeTheme()">
+          Cambia tema
+          <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+              d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div id="page-wrapper" class="page-wrapper">
+
+    <div class="page">
+
+      <div class="content">
+        <main>
+          <h1>TODO: cambiare Pratica</h1>
+          <h2>Esempio 1</h2>
+          <p>Prendiamo come esempio per il funzionamento dello stack questo programma: </p>
+          <pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
+    }
+}</code></pre>
+
+          <p>Questo programma deve allocare 2 valori a 2 variabili e per farlo deve inserire questi valori da qualche parte nella memoria. Più precisamente saranno memorizzate all'interno dello stack.</p>
+
+          <p>Infatti con la parola riservata del java "int" diciamo al compilatore e all'interprete di riservare nello stack 4 byte per ogni variabile.</p>
+
+          <p>Alla fine del programma la memoria verrà liberata automaticamente dalla JVM</p>
+          
+
+          <h2>Esempio 2</h2>
+          <p>Guardiamo step-by-step le righe del programma e osserviamo come cambia lo stack ad ogni passaggio.</p>
+          <pre><code class="language-java">public class Main {
+            public static void main(String[] args) {
+                int a = 5;
+                int b = 10;
+
+                foo();
+            }
+            public static void foo()
+            {
+                int x = 123;
+                int y = 432;
+            }
+        }</code></pre>
+          <p>Come prima cosa nello stack verranno inseriti i valori di "a" e di "b".</p>
+          <p>Quindi ecco un diagramma dello stack: </p>
+          <!-- TODO: tabella con lo stack -->
+
+
+          <p>La chiamata del metodo "foo()" andrà a creare un nuovo record di attivazione composto da:</p>
+            - x e y che sono le variabile che vengono inizializzate con i valori 123 e 432
+            - l'indirizzo di memoria che punta al record di attivazione del metodo "main"
+          <p>Di conseguenza lo stack sarà così: </p>
+
+
+
+<!-- TODO HEAP -->
+
+
+
+
+        </main>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="../JS/changeTheme.js"></script>
+
+  <!-- Custom JS script -->
+
+
+</body>
+
+</html>
