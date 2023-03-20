@@ -1,8 +1,5 @@
-path {
-    fill: white !important;
-}
 html {
-    font-family: "Open Sans", sans-serif;
+    font-family: "Open Sans", "Ubuntu", sans-serif;
     color: #333;
 }
 
@@ -12,11 +9,18 @@ body {
     overflow-x: hidden;
 }
 
-pre{
-    font-family: "Source Code Pro", Consolas, "Ubuntu Mono", Menlo, "DejaVu Sans Mono", monospace, monospace;
-    font-size: 0.875em;
-    background-color: #eaebec;
-    border-radius: 15px;
+p {
+    line-height: 1.5em;
+    margin: 2px;
+}
+li {
+    line-height: 1.5em;
+}
+
+
+h2 {
+    margin-bottom: 0.5em;
+    margin-top: 1.5em;
 }
 
 .left {
@@ -35,11 +39,6 @@ pre{
     display: none;
 }
 
-h2,
-h3 {
-    margin-top: 2.5em;
-}
-
 h4,
 h5 {
     margin-top: 2em;
@@ -50,9 +49,9 @@ h5 {
 .header+.header h5 {
     margin-top: 1em;
 }
-
+/*
 table {
-    margin: 0 auto;
+    margin-top: 2em;
     border-collapse: collapse;
 }
 
@@ -64,6 +63,7 @@ table td {
 table thead td {
     font-weight: 700;
 }
+*/
 .light {
     color: #333;
     background-color: #fff;
@@ -71,14 +71,6 @@ table thead td {
 .light .sidebar {
     background-color: #fafafa;
     color: #364149;
-}
-
-.light .sidebar::-webkit-scrollbar {
-    background: #fafafa;
-}
-
-.light .sidebar::-webkit-scrollbar-thumb {
-    background: #ccc;
 }
 
 .sidebar {
@@ -91,11 +83,25 @@ table thead td {
     padding: 10px 10px;
     font-size: 0.875em;
     box-sizing: border-box;
-    transition: transform 0.5s;
 }
 
-.sidebar code {
-    line-height: 2em;
+.container {
+    margin: auto;
+    width: 50%;
+    padding: 10px;	
+}
+
+.fotter{
+    align-items: center;
+    bottom: -10px;
+    padding: 5px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    position: fixed;
+    text-align: center;
+    border-radius: 10px;
+    border-color: #7e7e7e;
+    border-style: solid;
 }
 
 .chapter {
@@ -224,10 +230,12 @@ table thead td {
 .content {
     margin-left: auto;
     margin-right: auto;
-    max-width: 850px;
+    max-width: 750px;
+    padding-left: 50px;
     padding-bottom: 50px;
     padding-top: 50px;
 }
+
 
 .content a {
     text-decoration: none;
@@ -241,6 +249,9 @@ table thead td {
     max-width: 100%;
 }
 
+.light svg {
+    fill: #000000;
+}
 .light .content .header:link,
 .light .content .header:visited {
     color: #333;
@@ -265,7 +276,9 @@ table thead td {
     pointer: cursor;
 }
 
-
+.ayu svg {
+    fill: #ffffff;
+}
 .ayu .menu-bar {
     margin: auto -15px;
 }
@@ -374,4 +387,19 @@ table thead td {
 
 .ayu .icon-button i {
     margin: 0;
+}
+.light table td {
+    border-color: #f2f2f2;
+}
+.light table tbody tr:nth-child(2n) {
+    background: #f7f7f7;
+}
+.light table thead {
+    background: #ccc;
+}
+.light table thead td {
+    border: none;
+}
+.light table thead tr {
+    border: 1px #ccc solid;
 }
