@@ -1,19 +1,20 @@
 <!DOCTYPE HTML>
-<html lang="it" class="sidebar-visible">
+<html lang="it">
 
 <head>
   <meta charset="UTF-8">
   <title>Lo Stack e l'Heap in Java</title>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" href="CSS/font.css">
   <link rel="stylesheet" href="CSS/ayu-highlight.css">
   <link rel="stylesheet" href="CSS/highlight.css">
   <link rel="stylesheet" href="CSS/style.css">
+
   <script src="JS/jQuery.js"></script>
   <script src="JS/highlight.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
-
-
   <!-- Custom theme -->
 </head>
 
@@ -63,7 +64,9 @@
           <section id="Teoria">
             <h1>Lo Stack e l'Heap in Java</h1>
             <hr>
-            <p>Durante l’esecuzione di un programma in Java la memoria viene divisa in due parti:</p>
+            <p>Durante l’esecuzione di un programma è la JVM che gestisce la memoria.
+              Più precisamente essa viene divisa in due macro aree:
+            </p>
             <ul>
               <li>Stack</li>
               <li>Heap</li>
@@ -73,14 +76,11 @@
 
           <section id="Stack">
             <h2>Stack</h2>
-            <p>Infatti all’interno dello stack vengono memorizzare le variabili di tipo primitivo, gli indirizzi di
-              memoria che puntano agli oggetti all’interno dell’heap. Ogni volta che viene chiamato un metodo si crea un
+            <p>All’interno dello stack vengono memorizzare tutte quelle informazioni che hanno uno scope di visibilità locale alla funzione e la loro dimensione non cambia durante il runtime. Ogni volta che viene chiamato un metodo si crea un
               nuovo record di attivazione. Dentro ad ogni record di attivazione vengono memorizzati i parametri, l’oggetto
               a cui appartiene (this), le variabili del metodo, il valore di ritorno, l’indirizzo della chiamata del
               metodo. </p>
-            <p>I dati all’interno dello stack hanno uno scope di visibilità locale.</p>
-            <p>Lo stack ha una dimensione limitata di pochi megabyte. Se viene superata si genera un errore di
-              StackOverflowError.</p>
+              <p>La dimensione dello stack viene gestita dalla JVM durante la compilazione e se viene superata si genera un errore di tipo StackOverflowError.</p>
             <p>Lo stack si comporta come una pila, cioè, in modalità LIFO (Last Input First Output). </p>
           </section>
 
@@ -90,7 +90,8 @@
             <p>Dato che gli oggetti sono memorizzati in modo sparso all’interno dell’heap, al momento della creazione di
               un nuovo oggetto, viene memorizzato nello stack l’indirizzo di memoria in cui si trova.</p>
             <p>All’interno dell’heap sono memorizzati in modo non contiguo.</p>
-            <p>Infatti è il garbage collector che pensa a gestire lo spazio e che libera gli oggetti che non vengono più
+            <p>Per questo gestire in modo ottimale l'heap è un lavoro che viene affidato alla JVM che grazie al sistema "Garbage Collector" permette di astrarre il problema della memoria al linguaggio di programmazione che utilizza diversi algoritmi per usare nel miglior modo lo spazio lasciato tra i vari oggetti</p>
+            <p>Infatti è il garbage collector che pensa a gestire lo spazio e che libera gli oggetti che non verranno più
               utilizzati.</p>
             <p>Gli elementi all’interno dell’heap sono accessibili in qualunque punto del programma.</p>
             <p>Se la memoria all’interno dell’heap si riempie java genera l’errore java.lang.OutOfMemoryError.</p>
@@ -117,7 +118,7 @@
 
             <p>Questo programma deve allocare 2 valori a 2 variabili e per farlo deve inserire questi valori da qualche parte nella memoria. Più precisamente saranno memorizzate all'interno dello stack.</p>
 
-            <p>Infatti con la parola riservata del java "int" diciamo al compilatore e all'interprete di riservare nello stack 4 byte per ogni variabile.</p>
+            <p>Infatti con la parola riservata del java "int" diciamo alla JVM di riservare nello stack 4 byte per ogni numero.</p>
 
             <p>Alla fine del programma la memoria mamma mia verrà liberata automaticamente dalla JVM</p>
           </section>
@@ -160,12 +161,12 @@
               </tr>
             </tbody>
             </table>
-            <!-- TODO: tabella con lo stack -->
-
 
             <p>La chiamata del metodo "foo()" andrà a creare un nuovo record di attivazione composto da:</p>
-              - x e y che sono le variabile che vengono inizializzate con i valori 123 e 432
-              - l'indirizzo di memoria che punta al record di attivazione del metodo "main"
+            <ul>
+              <li>x e y che sono le variabile che vengono inizializzate con i valori 123 e 432;</li>
+              <li>l'indirizzo di memoria che punta al record di attivazione del metodo "main".</li>
+            </ul>
             <p>Di conseguenza lo stack sarà così: </p>
             <table>
               <thead>
@@ -195,7 +196,6 @@
                 <td>0x00000010</td>
                 <td>0x00000000</td>
               </tr>
-              
               </tbody>
             </table>
           </section>
@@ -229,20 +229,64 @@
                 <tr>
                   <td>0x00000004</td>
                   <td>persona</td>
-                  <td>-->indirizzo in cui è presente l'oggetto nell'heap</td>
+                  <td>indirizzo in cui è presente l'oggetto nell'heap</td>
                 </tr>
               </tbody>
             </table>
-          <p>Di solito l'indirizzo dell'heap parte dalla fine della RAM quindi ipotizzando di avere 1GB di RAM si parte dall'indirizzo 2^32-1 e scende verso 0x00000000.</p>
-          <p>Quando un oggetto </p>
-          <h2>Parametri</h2>
-          <p>TODO: fare esempio</p>
-        </section>
+            <p>Di solito l'indirizzo dell'heap parte dalla fine della RAM quindi ipotizzando di avere 1GB di RAM si parte dall'indirizzo 2^32-1 e scende verso 0x00000000.</p>
+          </section>
+            
+          <section id="Parametri">
+            <h2>Parametri</h2>
+            <p>Quando passiamo un parametro ad una funzione, questo parametro viene copiato nella memoria dello stack. </p>
+            <pre><code class="language-java">public class Main {
+public static void main(String[] args) {
+    int a = 5;
+    int b = 10;
+    foo(a);
+}
+public static void foo(int x)
+{
+    int y = 123;
+}</code></pre>
+            <p>Quando viene chiamato il metodo "foo()" viene creato un nuovo record di attivazione composto da:</p>
+            <ul>
+              <li>x che è il parametro che viene inizializzato con il valore di "a" (5);</li>
+              <li>l'indirizzo di memoria che punta al record di attivazione del metodo "main".</li>
+            </ul>
+            <table>
+              <thead>
+                <tr>
+                  <th>Indirizzo</th>
+                  <th>Valore</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0x00000000</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>0x00000004</td>
+                  <td>10</td>
+                </tr>
+                <tr>
+                  <td>0x00000008</td>
+                  <td>123</td>
+                </tr>
+                <tr>
+                  <td>0x0000000C</td>
+                  <td>0x00000000</td>
+                </tr>
+            </table>
 
-        <section id="">
-        <h2>TODO: Fare esempio complesso</h2>
-        <p>boh</p>
-      </section>
+            <p>TODO: fare esempio</p>
+          </section>
+
+          <section id="">
+            <h2>TODO: Fare esempio complesso</h2>
+            <p>boh</p>
+          </section>
 
         </main>
       </div>
