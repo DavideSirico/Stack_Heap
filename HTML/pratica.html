@@ -63,26 +63,46 @@
 
           <p>Infatti con la parola riservata del java "int" diciamo al compilatore e all'interprete di riservare nello stack 4 byte per ogni variabile.</p>
 
-          <p>Alla fine del programma la memoria verrà liberata automaticamente dalla JVM</p>
+          <p>Alla fine del programma la memoria mamma mia verrà liberata automaticamente dalla JVM</p>
           
 
           <h2>Esempio 2</h2>
           <p>Guardiamo step-by-step le righe del programma e osserviamo come cambia lo stack ad ogni passaggio.</p>
           <pre><code class="language-java">public class Main {
-            public static void main(String[] args) {
-                int a = 5;
-                int b = 10;
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
 
-                foo();
-            }
-            public static void foo()
-            {
-                int x = 123;
-                int y = 432;
-            }
-        }</code></pre>
+        foo();
+    }
+    public static void foo()
+    {
+        int x = 123;
+        int y = 432;
+    }
+}</code></pre>
           <p>Come prima cosa nello stack verranno inseriti i valori di "a" e di "b".</p>
           <p>Quindi ecco un diagramma dello stack: </p>
+
+          <!-- Non so se sono così -->
+          <table>
+            <thead>
+            <tr>
+              <th>Indirizzo</th>
+              <th>Valore</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>0x00000000</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>0x00000004</td>
+              <td>10</td>
+            </tr>
+          </tbody>
+          </table>
           <!-- TODO: tabella con lo stack -->
 
 
@@ -90,12 +110,79 @@
             - x e y che sono le variabile che vengono inizializzate con i valori 123 e 432
             - l'indirizzo di memoria che punta al record di attivazione del metodo "main"
           <p>Di conseguenza lo stack sarà così: </p>
+          <table>
+            <thead>
+            <tr>
+              <th>Indirizzo</th>
+              <th>Valore</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>0x00000000</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>0x00000004</td>
+              <td>10</td>
+            </tr>
+            <tr>
+              <td>0x00000008</td>
+              <td>123</td>
+            </tr>
+            <tr>
+              <td>0x0000000C</td>
+              <td>432</td>
+            </tr>
+            <tr>
+              <td>0x00000010</td>
+              <td>0x00000000</td>
+            </tr>
+            
+            </tbody>
+          </table>
 
 
 
 <!-- TODO HEAP -->
+          <h2>TODO: Heap</h2>
+          <p>Se dobbiamo passare dei dati ad una funzione by reference dobbiamo affidarci all'heap</p>
+          <p>In questo programma facciamo riferimento ad una classe <code class="language-java">Persona</code>  </p>
+          <pre><code class="language-java">public class Main {
+    public static void main(String[] args) {
+        int a = 5;
+        Persona persona = new Persona("Mario","Rossi");
+    }
+}</code></pre>
+          <p>Quando il programma viene eseguito lo stack sarà in questo stato: </p>
+          <table>
+            <thead>
+              <tr>
+                <th>Indirizzo</th>
+                <th>Nome</th>
+                <th>Valore</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0x00000000</td>
+                <td>a</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>0x00000004</td>
+                <td>persona</td>
+                <td>-->indirizzo in cui è presente l'oggetto nell'heap</td>
+              </tr>
+            </tbody>
+          </table>
+        <p>Di solito l'indirizzo dell'heap parte dalla fine della RAM quindi ipotizzando di avere 1GB di RAM si parte dall'indirizzo 2^32-1 e scende verso 0x00000000.</p>
+        <p>Quando un oggetto </p>
+        <h2>Parametri</h2>
+        <p>TODO: fare esempio</p>
 
-
+        <h2>TODO: Fare esempio complesso</h2>
+        <p>boh</p>
 
 
         </main>
