@@ -49,8 +49,9 @@ h5 {
 .header+.header h5 {
     margin-top: 1em;
 }
-/*
+
 table {
+    margin: 0 auto;
     margin-top: 2em;
     border-collapse: collapse;
 }
@@ -63,7 +64,7 @@ table td {
 table thead td {
     font-weight: 700;
 }
-*/
+
 .light {
     color: #333;
     background-color: #fff;
