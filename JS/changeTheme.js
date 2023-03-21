@@ -27,7 +27,7 @@ function changeTheme()
 
 
 let section = document.querySelectorAll('section');
-let lists = document.querySelectorAll('.list');
+let lists = document.querySelectorAll('a');
 function activeLink(li) {
     lists.forEach((item) => item.classList.remove('active'));
     li.classList.add('active');
@@ -45,7 +45,7 @@ window.onscroll = () => {
         let id = sec.getAttribute('id');
 
         if (top >= offset && top < offset + height) {
-            const target = document.querySelector(`[href='#${id}']`).parentElement;
+            const target = document.querySelector(`[href='#${id}']`);
             activeLink(target);
         }
     })
