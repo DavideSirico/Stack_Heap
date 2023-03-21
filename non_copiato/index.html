@@ -1,56 +1,249 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible">
+<html lang="it" class="sidebar-visible">
 
 <head>
   <meta charset="UTF-8">
   <title>Lo Stack e l'Heap in Java</title>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="CSS/ayu-highlight.css">
+  <link rel="stylesheet" href="CSS/highlight.css">
   <link rel="stylesheet" href="CSS/style.css">
   <script src="JS/jQuery.js"></script>
+  <script src="JS/highlight.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
   <!-- Custom theme -->
 </head>
 
 <body class="light">
- 
-  <!-- TODO cambiare gli href -->
   <nav id="sidebar" class="sidebar">
     <ol class="chapter">
-      <button id="theme-toggle" class="icon-button" type="button" onclick="changeTheme()">
-        <img src="SVG/paintbrush_dark.svg" width="10px"/>
-      </button>
-      <li class="affix"><a href="index.html" class="active">Home</a></li>
-      <li><a href="HTML/teoria.html"><strong >1.</strong> Teoria</a></li>
+      <li><a href="index.html">Stack e Heap</a></li>
       <li>
         <ol class="section">
-          <li><a href="" ><strong>1.1.</strong> Teoria</a></li> <!-- ci mettiamo gli id dei paragrafi-->
-          <li><a href=""><strong>1.2.</strong> Dentro la memoria</a></li>
+          <li><a href="#Teoria"><strong>1.</strong> Teoria</a></li>
+          <li>
+            <ol class="section">
+              <li><a href="#Stack"><strong>1.1. </strong> Stack</a></li>
+              <li><a href="#Heap"><strong>1.2. </strong> Heap</a></li>
+            </ol>
+          </li>
+          <li><a href=""><strong>2.</strong> Pratica</a></li>
+          <li>
+            <ol class="section">
+              <li><a href=""><strong>2.1. </strong> Esempio 1</a></li>
+              <li><a href=""><strong>2.2. </strong> Esempio 2</a></li>
+              <li><a href=""><strong>2.3. </strong> Esempio Riassuntivo</a></li>
+            </ol>
+          </li>
         </ol>
       </li>
-      <li><a href="HTML/teoria.html"><strong >2.</strong> Pratica</a></li>
-      <li>
-        <ol class="section">
-          <li><a href="#"><strong>2.1.</strong> Stack in azione</a></li>
-          <li><a href="#"><strong>2.2.</strong> Heap in azione</a></li>
-        </ol>
-      </li>
-      <li><a href="HTML/credits.html"><strong>3.</strong> Credits</a></li>
+      <li><a href="HTML/credits.html">Credits</a></li>
     </ol>
+    <div class="container">
+      <div class="fotter">
+        <button id="theme-toggle" class="icon-button" type="button" onclick="changeTheme()">
+          Cambia tema
+          <svg width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+            <path
+              d="M339.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L568.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S517.7-4.4 499.1 9.6L262.4 187.2c-24 18-38.2 46.1-38.4 76.1L339.3 367.1zm-19.6 25.4l-116-104.4C143.9 290.3 96 339.6 96 400c0 3.9 .2 7.8 .6 11.6C98.4 429.1 86.4 448 68.8 448H64c-17.7 0-32 14.3-32 32s14.3 32 32 32H208c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z" />
+          </svg>
+        </button>
+      </div>
+    </div>
   </nav>
-
   <div id="page-wrapper" class="page-wrapper">
 
     <div class="page">
 
-      <div id="content" class="content">
+      <div class="content">
         <main>
-          <a class="header" href="#">
+          <section id="Teoria">
             <h1>Lo Stack e l'Heap in Java</h1>
-          </a>
-          <img/>
-          <img/>
-          <!-- <iframe style="width: 1000px; height:1000px;" src="https://cscircles.cemc.uwaterloo.ca/java_visualize/iframe-embed.html?faking_cpp=false#data=%7B%22user_script%22%3A%22public%20class%20Main%20%7B%5Cn%20%20%20public%20static%20void%20main(String%5B%5D%20args)%20%7B%5Cn%20%20%20%20%20%20System.out.println(%5C%22Hello%20World!%5C%22)%3B%5Cn%20%20%20%20%20%20int%20x%20%3D%202%3B%5Cn%20%20%20%20%20%20int%20y%20%3D%2041%3B%5Cn%20%20%20%20%20%20int%20ris%3B%5Cn%20%20%20%20%20%20ris%20%3D%20somma(x%2Cy)%3B%5Cn%20%20%20%20%20%20System.out.println(ris)%3B%5Cn%20%20%20%7D%5Cn%20%20%20public%20static%20int%20somma(int%20a%2C%20int%20b)%5Cn%20%20%20%7B%5Cn%20%20%20%20%20%20int%20somma%3B%5Cn%20%20%20%20%20%20somma%20%3D%20a%20%2B%20b%3B%5Cn%20%20%20%20%20%20return%20somma%3B%5Cn%20%20%20%7D%5Cn%7D%22%2C%22options%22%3A%7B%22showStringsAsValues%22%3Afalse%2C%22showAllFields%22%3Afalse%7D%2C%22args%22%3A%5B%5D%2C%22stdin%22%3A%22%22%7D&cumulative=false&heapPrimitives=false&drawParentPointers=false&textReferences=false&showOnlyOutputs=false&py=3&curInstr=0&resizeContainer=true&highlightLines=true&rightStdout=true" frameborder="0" scrolling="no"></iframe> -->
-         
+            <hr>
+            <p>Durante l’esecuzione di un programma in Java la memoria viene divisa in due parti:</p>
+            <ul>
+              <li>Stack</li>
+              <li>Heap</li>
+            </ul>
+            <p>Le due aree hanno scopi e caratteristiche differenti.</p>
+          </section>
+
+          <section id="Stack">
+            <h2>Stack</h2>
+            <p>Infatti all’interno dello stack vengono memorizzare le variabili di tipo primitivo, gli indirizzi di
+              memoria che puntano agli oggetti all’interno dell’heap. Ogni volta che viene chiamato un metodo si crea un
+              nuovo record di attivazione. Dentro ad ogni record di attivazione vengono memorizzati i parametri, l’oggetto
+              a cui appartiene (this), le variabili del metodo, il valore di ritorno, l’indirizzo della chiamata del
+              metodo. </p>
+            <p>I dati all’interno dello stack hanno uno scope di visibilità locale.</p>
+            <p>Lo stack ha una dimensione limitata di pochi megabyte. Se viene superata si genera un errore di
+              StackOverflowError.</p>
+            <p>Lo stack si comporta come una pila, cioè, in modalità LIFO (Last Input First Output). </p>
+          </section>
+
+          <section id="Heap">
+            <h2 >Heap</h2>
+            <p>L’heap è l’area di memoria in cui sono memorizzati gli oggetti e i loro attributi.</p>
+            <p>Dato che gli oggetti sono memorizzati in modo sparso all’interno dell’heap, al momento della creazione di
+              un nuovo oggetto, viene memorizzato nello stack l’indirizzo di memoria in cui si trova.</p>
+            <p>All’interno dell’heap sono memorizzati in modo non contiguo.</p>
+            <p>Infatti è il garbage collector che pensa a gestire lo spazio e che libera gli oggetti che non vengono più
+              utilizzati.</p>
+            <p>Gli elementi all’interno dell’heap sono accessibili in qualunque punto del programma.</p>
+            <p>Se la memoria all’interno dell’heap si riempie java genera l’errore java.lang.OutOfMemoryError.</p>
+            <p>L’heap è suddiviso in più parti:</p>
+            <ul>
+              <li>Young generation</li>
+              <li>Survivor space</li>
+              <li>Old generation</li>
+              <li>Permanent generation</li>
+              <li>Code Cache</li>
+            </ul>
+          </section>
+
+          <section>
+            <h1>TODO: cambiare Pratica</h1>
+            <h2>Esempio 1</h2>
+            <p>Prendiamo come esempio per il funzionamento dello stack questo programma: </p>
+            <pre><code class="language-java">public class Main {
+      public static void main(String[] args) {
+          int a = 5;
+          int b = 10;
+      }
+  }</code></pre>
+
+            <p>Questo programma deve allocare 2 valori a 2 variabili e per farlo deve inserire questi valori da qualche parte nella memoria. Più precisamente saranno memorizzate all'interno dello stack.</p>
+
+            <p>Infatti con la parola riservata del java "int" diciamo al compilatore e all'interprete di riservare nello stack 4 byte per ogni variabile.</p>
+
+            <p>Alla fine del programma la memoria mamma mia verrà liberata automaticamente dalla JVM</p>
+          </section>
+
+          <section>
+            <h2>Esempio 2</h2>
+            <p>Guardiamo step-by-step le righe del programma e osserviamo come cambia lo stack ad ogni passaggio.</p>
+            <pre><code class="language-java">public class Main {
+      public static void main(String[] args) {
+          int a = 5;
+          int b = 10;
+
+          foo();
+      }
+      public static void foo()
+      {
+          int x = 123;
+          int y = 432;
+      }
+  }</code></pre>
+            <p>Come prima cosa nello stack verranno inseriti i valori di "a" e di "b".</p>
+            <p>Quindi ecco un diagramma dello stack: </p>
+
+            <!-- Non so se sono così -->
+            <table>
+              <thead>
+              <tr>
+                <th>Indirizzo</th>
+                <th>Valore</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0x00000000</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>0x00000004</td>
+                <td>10</td>
+              </tr>
+            </tbody>
+            </table>
+            <!-- TODO: tabella con lo stack -->
+
+
+            <p>La chiamata del metodo "foo()" andrà a creare un nuovo record di attivazione composto da:</p>
+              - x e y che sono le variabile che vengono inizializzate con i valori 123 e 432
+              - l'indirizzo di memoria che punta al record di attivazione del metodo "main"
+            <p>Di conseguenza lo stack sarà così: </p>
+            <table>
+              <thead>
+              <tr>
+                <th>Indirizzo</th>
+                <th>Valore</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                <td>0x00000000</td>
+                <td>5</td>
+              </tr>
+              <tr>
+                <td>0x00000004</td>
+                <td>10</td>
+              </tr>
+              <tr>
+                <td>0x00000008</td>
+                <td>123</td>
+              </tr>
+              <tr>
+                <td>0x0000000C</td>
+                <td>432</td>
+              </tr>
+              <tr>
+                <td>0x00000010</td>
+                <td>0x00000000</td>
+              </tr>
+              
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+  <!-- TODO HEAP -->
+            <h2>TODO: Heap</h2>
+            <p>Se dobbiamo passare dei dati ad una funzione by reference dobbiamo affidarci all'heap</p>
+            <p>In questo programma facciamo riferimento ad una classe <code class="language-java">Persona</code>  </p>
+            <pre><code class="language-java">public class Main {
+      public static void main(String[] args) {
+          int a = 5;
+          Persona persona = new Persona("Mario","Rossi");
+      }
+  }</code></pre>
+            <p>Quando il programma viene eseguito lo stack sarà in questo stato: </p>
+            <table>
+              <thead>
+                <tr>
+                  <th>Indirizzo</th>
+                  <th>Nome</th>
+                  <th>Valore</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>0x00000000</td>
+                  <td>a</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>0x00000004</td>
+                  <td>persona</td>
+                  <td>-->indirizzo in cui è presente l'oggetto nell'heap</td>
+                </tr>
+              </tbody>
+            </table>
+          <p>Di solito l'indirizzo dell'heap parte dalla fine della RAM quindi ipotizzando di avere 1GB di RAM si parte dall'indirizzo 2^32-1 e scende verso 0x00000000.</p>
+          <p>Quando un oggetto </p>
+          <h2>Parametri</h2>
+          <p>TODO: fare esempio</p>
+        </section>
+
+        <section>
+        <h2>TODO: Fare esempio complesso</h2>
+        <p>boh</p>
+      </section>
+
         </main>
       </div>
     </div>
