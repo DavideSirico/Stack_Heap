@@ -14,10 +14,6 @@
 
   <script src="./JS/jQuery.js"></script>
   <script src="./JS/highlight.min.js"></script>
-
-
-  
-  
   
   <script>hljs.highlightAll();</script>
 </head>
@@ -116,8 +112,7 @@
               "Garbage Collector" che permette di astrarre il problema della memoria al linguaggio di programmazione che
               utilizza diversi algoritmi per usare nel miglior modo lo spazio lasciato tra i vari oggetti.</p>
             <p>Infatti è il garbage collector che pensa a gestire lo spazio e che libera gli oggetti che non verranno
-              più
-              utilizzati.</p>
+              più utilizzati.</p>
             <p>Gli elementi all’interno dell’heap sono accessibili in qualunque punto del programma.</p>
             <p>Se la memoria all’interno dell’heap si riempie java genera l’errore java.lang.OutOfMemoryError.</p>
             <p>L’heap è suddiviso in più parti:</p>
@@ -149,9 +144,8 @@
             <p>Questo programma deve allocare 2 valori a 2 variabili e per farlo deve inserire questi valori da qualche
               parte nella memoria. Più precisamente saranno memorizzate all'interno dello stack.</p>
             <p>Infatti con la parola riservata del java <code class="hljs">int</code> diciamo alla JVM di riservare
-              nello stack 4 byte per ogni
-              numero.</p>
-            <p>Alla fine del programma la memoria verrà liberata automaticamente dalla JVM</p>
+              nello stack 4 byte per ogni numero.</p>
+            <p>Alla fine del programma la memoria verrà liberata automaticamente dalla JVM.</p>
           </section>
 
           <section id="EsempioStackFunzione">
@@ -183,7 +177,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td rowspan="2">main</td>
+                  <td rowspan="2" style="text-align: center;">main</td>
                   <td>0x00000000</td>
                   <td>a</td>
                   <td>5</td>
@@ -246,7 +240,7 @@
               </tbody>
             </table>
             <p>Quando il metodo foo finisce nello stack il record di attivazione del metodo foo viene rimosso, cioè, si
-              avrà questa condizione: </p>
+              avrà questa situazione: </p>
             <table>
               <thead>
                 <tr>
@@ -274,9 +268,8 @@
 
           <section id="EsempioHeap">
             <h2>Esempio Heap</h2>
-            <p>Se vogliamo usare un oggetto dobbiamo affidarci all'heap</p>
-            <p>In questo programma facciamo riferimento ad una classe <code class="language-java">Persona</code>
-              generica</p>
+            <p>Se vogliamo usare un oggetto dobbiamo affidarci all'heap.</p>
+            <p>In questo programma facciamo riferimento ad una classe <code class="hljs">Persona</code> generica.</p>
             <pre><code class="language-java">public class Main {
     public static void main(String[] args) {
         int a = 5;
@@ -295,7 +288,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td rowspan="2">main</td>
+                  <td rowspan="2" style="text-align: center;">main</td>
                   <td>0x00000000</td>
                   <td>a</td>
                   <td>5</td>
@@ -308,13 +301,12 @@
               </tbody>
             </table>
             <p>Di solito l'indirizzo dell'heap parte dalla fine della RAM quindi ipotizzando di avere 1GB di RAM si
-              parte dall'indirizzo 2^32-1 e scende verso <code class="hljs">0x00000000</code>.</p>
+              partirebbe dall'indirizzo 2^30-1 e scende verso <code class="hljs">0x00000000</code>.</p>
           </section>
 
           <section id="EsempioParametri">
             <h2>Esempio con parametri e valore di ritorno</h2>
-            <p>Quando passiamo un parametro ad una funzione, questo parametro viene copiato nella memoria dello stack.
-            </p>
+            <p>Quando passiamo un parametro ad una funzione, questo parametro viene copiato nella memoria dello stack.</p>
             <p>Anche il valore di ritono viene salvato nello stack.</p>
             <pre><code class="language-java">public class Main {
     public static void main(String[] args) {
@@ -401,8 +393,12 @@ $ 5701 Jps
           </section>
 
           <section id="jmap">
-            <p>Esempio di <code class="hljs">jmap</code>:
+            <p>Esempio di <code class="hljs">jmap per visualizzare lo stato corrente della memoria</code>:
             <pre><code class="language-shell">$ jmap -histo:live &ltpid&gt </pre></code>
+            </p>
+            <p>Esempio di <code class="hljs">jmap per salvare in un file binario lo stato corrente della memoria</code>:
+            <pre><code class="language-shell">$ jmap -dump:format=b,file=heap.bin &ltpid&gt </pre></code>
+            Poi per visualizzare la memoria salvata in un file binario possiamo usare il programma visualVM.
             </p>
           </section>
         </main>
