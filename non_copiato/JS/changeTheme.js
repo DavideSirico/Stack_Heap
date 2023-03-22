@@ -1,13 +1,11 @@
 function changeTheme()
 {
-    var html = document.querySelector('html');
     var theme;
     var previousTheme = $('body').get(0).className;
     var stylesheets = {
         highlight: $("[href$=\"CSS/highlight.css\"]")[0],
         ayuHighlight: $("[href$=\"CSS/ayu-highlight.css\"]")[0],
     };
-    console.log(stylesheets);
     if(previousTheme == "ayu")
     {
         theme = "light";
@@ -20,8 +18,6 @@ function changeTheme()
         stylesheets.highlight.disabled = true;
     }
     document.body.className = theme;
-    html.classList.remove(previousTheme);
-    html.classList.add(theme);
 }
 
 
@@ -34,7 +30,8 @@ function activeLink(li) {
 lists.forEach((item) =>
     item.addEventListener('click', function(){
         activeLink(this);
-    }));
+    })
+);
 
 window.onscroll = () => {
     section.forEach(sec => {
