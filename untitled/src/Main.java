@@ -1,14 +1,30 @@
-import java.util.Random;
 public class Main {
+
     public static void main(String[] args) {
-        Random rand = new Random();
-        int a = rand.nextInt(1);
-        int b = 10;
-        int somma = somma(a, b);
-        System.out.println(somma);
+        int h = 3;
+        int i = 20;
+        int j = h;
+
+        foo(j);
     }
-    public static int somma(int a, int b) {
-        int somma = a + b;
-        return somma;
+
+    public static void foo(int x) {
+        int y = 10;
+        int z = y;
+
+        baz(z);
+        bar(x, z);
+    }
+
+    public static void bar(int a, int b) {
+        int c = 5;
+        Integer d = new Integer(5);
+        int e = d;
+
+        baz(e);
+    }
+
+    public static void baz(int f) {
+        int g = 100;
     }
 }
