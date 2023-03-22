@@ -35,9 +35,10 @@
           <li>
             <ol class="section">
               <li><a href="#EsempioStack"><strong>2.1. </strong> Esempio Stack</a></li>
-              <li><a href="#EsempioHeap"><strong>2.2. </strong> Esempio Heap</a></li>
-              <li><a href="#EsempioParametri"><strong>2.3. </strong> Esempio con parametri</a></li>
-              <li><a href="#EsempioComplesso"><strong>2.4. </strong> Esempio complesso</a></li>
+              <li><a href="#EsempioStackFunzione"><strong>2.2. </strong> Esempio Metodo</a></li>
+              <li><a href="#EsempioHeap"><strong>2.3. </strong> Esempio Heap</a></li>
+              <li><a href="#EsempioParametri"><strong>2.4. </strong> Esempio con parametri</a></li>
+              <li><a href="#EsempioComplesso"><strong>2.5. </strong> Esempio complesso</a></li>
             </ol>
           </li>
         </ol>
@@ -62,9 +63,13 @@
 
       <div class="content">
         <main>
-          <section id="Teoria">
+          <section id="">
             <h1>Lo Stack e l'Heap in Java</h1>
+          </section>
+
+          <section id="Teoria">
             <hr>
+            <h2>Teoria</h2>
             <p>Durante l’esecuzione di un programma è la JVM che gestisce la memoria.
               Più precisamente essa viene divisa in due macro aree:
             </p>
@@ -105,9 +110,12 @@
               <li>Code Cache</li>
             </ul>
           </section>
+          <hr>
 
           <section id="Pratica">
-            <h1>TODO: cambiare Pratica</h1>
+            <h1>Codice</h1>
+          </section>
+          <section id="EsempioStack">
             <h2>Esempio 1</h2>
             <p>Prendiamo come esempio per il funzionamento dello stack questo programma: </p>
             <pre><code class="language-java">public class Main {
@@ -124,7 +132,7 @@
             <p>Alla fine del programma la memoria mamma mia verrà liberata automaticamente dalla JVM</p>
           </section>
 
-          <section id="EsempioStack">
+          <section id="EsempioStackFunzione">
             <h2>Esempio 2</h2>
             <p>Guardiamo step-by-step le righe del programma e osserviamo come cambia lo stack ad ogni passaggio.</p>
             <pre><code class="language-java">public class Main {
@@ -317,6 +325,7 @@ public static void foo(int x)
       int g = 100;
   }
 }</code></pre>
+          <p>TODO: descrivere cosa succede</p>
           </section>
 
         </main>
