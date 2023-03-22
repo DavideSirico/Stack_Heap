@@ -64,7 +64,7 @@
       </div>
     </div>
   </nav>
-  
+
     <div class="content">
       <main>
         <section id="">
@@ -132,10 +132,10 @@
           <h2>Esempio Stack</h2>
           <p>Prendiamo come esempio per il funzionamento dello stack in questo programma: </p>
           <pre><code class="language-java">public class Main {
-  public static void main(String[] args) {
-    int a = 5;
-    int b = 10;
-  }
+    public static void main(String[] args) {
+      int a = 5;
+      int b = 10;
+    }
 }</code></pre>
 
           <p>Questo programma deve allocare 2 valori a 2 variabili e per farlo deve inserire questi valori da qualche
@@ -149,16 +149,16 @@
           <h2>Esempio con una funzione</h2>
           <p>Guardiamo step-by-step le righe del programma e osserviamo come cambia lo stack ad ogni passaggio.</p>
           <pre><code class="language-java">public class Main {
-  public static void main(String[] args) {
-      int a = 5;
-      int b = 10;
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
 
-      foo();
-  }
-  public static void foo() {
-      int x = 123;
-      int y = 432;
-  }
+        foo();
+    }
+    public static void foo() {
+        int x = 123;
+        int y = 432;
+    }
 }</code></pre>
           <p>Come prima cosa nello stack verranno inseriti i valori di <code class="hljs">a</code> e di <code
               class="hljs">b</code>.</p>
@@ -268,10 +268,10 @@
           <p>Se vogliamo usare un oggetto dobbiamo affidarci all'heap.</p>
           <p>In questo programma facciamo riferimento ad una classe <code class="hljs">Persona</code> generica.</p>
           <pre><code class="language-java">public class Main {
-  public static void main(String[] args) {
-      int a = 5;
-      Persona persona = new Persona("Mario","Rossi");
-  }
+    public static void main(String[] args) {
+        int a = 5;
+        Persona persona = new Persona("Mario","Rossi");
+    }
 }</code></pre>
           <p>Quando il programma viene eseguito lo stack sarà in questo stato: </p>
           <table>
@@ -306,14 +306,14 @@
           <p>Quando passiamo un parametro ad una funzione, questo parametro viene copiato nella memoria dello stack.</p>
           <p>Anche il valore di ritono viene salvato nello stack.</p>
           <pre><code class="language-java">public class Main {
-  public static void main(String[] args) {
-      int a = 5;
-      int b = 10;
-      foo(a);
-  }
-  public static void foo(int x) {
-      int y = 123;
-  }
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 10;
+        foo(a);
+    }
+    public static void foo(int x) {
+        int y = 123;
+    }
 }</code></pre>
           <p>Quando viene chiamato il metodo <code class="hljs">foo()</code> viene creato un nuovo record di
             attivazione composto da:</p>
@@ -385,7 +385,7 @@
           <p>Esempio di <code class="hljs">jps</code>:
           <pre><code class="language-shell">$ jps
 $ 5701 Jps
-4460 Main</pre></code>
+  4460 Main</pre></code>
           </p>
         </section>
 
