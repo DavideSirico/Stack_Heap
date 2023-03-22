@@ -13,9 +13,13 @@
   <link rel="stylesheet" href="./CSS/style.css">
 
   <script src="./JS/jQuery.js"></script>
-  <script src="./JS/highlight.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <!-- Custom theme -->
+  <script src="./JS/highlight.min.js"></script>
+
+
+  
+  
+  
+  <script>hljs.highlightAll();</script>
 </head>
 
 <body class="light">
@@ -136,11 +140,11 @@
             <h2>Esempio Stack</h2>
             <p>Prendiamo come esempio per il funzionamento dello stack in questo programma: </p>
             <pre><code class="language-java">public class Main {
-      public static void main(String[] args) {
-          int a = 5;
-          int b = 10;
-      }
-  }</code></pre>
+    public static void main(String[] args) {
+      int a = 5;
+      int b = 10;
+    }
+}</code></pre>
 
             <p>Questo programma deve allocare 2 valori a 2 variabili e per farlo deve inserire questi valori da qualche
               parte nella memoria. Più precisamente saranno memorizzate all'interno dello stack.</p>
@@ -160,8 +164,7 @@
 
         foo();
     }
-    public static void foo()
-    {
+    public static void foo() {
         int x = 123;
         int y = 432;
     }
@@ -275,11 +278,11 @@
             <p>In questo programma facciamo riferimento ad una classe <code class="language-java">Persona</code>
               generica</p>
             <pre><code class="language-java">public class Main {
-      public static void main(String[] args) {
-          int a = 5;
-          Persona persona = new Persona("Mario","Rossi");
-      }
-  }</code></pre>
+    public static void main(String[] args) {
+        int a = 5;
+        Persona persona = new Persona("Mario","Rossi");
+    }
+}</code></pre>
             <p>Quando il programma viene eseguito lo stack sarà in questo stato: </p>
             <table>
               <thead>
@@ -391,7 +394,7 @@
 
           <section id="jps">
             <p>Esempio di <code class="hljs">jps</code>:
-            <pre><code class="language-bash">$ jps
+            <pre><code class="language-shell">$ jps
 $ 5701 Jps
   4460 Main</pre></code>
             </p>
@@ -399,7 +402,7 @@ $ 5701 Jps
 
           <section id="jmap">
             <p>Esempio di <code class="hljs">jmap</code>:
-            <pre><code class="language-bash">$ jmap -histo:live <pid> </pre></code>
+            <pre><code class="language-shell">$ jmap -histo:live &ltpid&gt </pre></code>
             </p>
           </section>
         </main>
