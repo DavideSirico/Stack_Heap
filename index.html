@@ -7,13 +7,13 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <link rel="stylesheet" href="CSS/font.css">
-  <link rel="stylesheet" href="CSS/ayu-highlight.css">
-  <link rel="stylesheet" href="CSS/highlight.css">
-  <link rel="stylesheet" href="CSS/style.css">
+  <link rel="stylesheet" href="./CSS/font.css">
+  <link rel="stylesheet" href="./CSS/ayu-highlight.css">
+  <link rel="stylesheet" href="./CSS/highlight.css">
+  <link rel="stylesheet" href="./CSS/style.css">
 
-  <script src="JS/jQuery.js"></script>
-  <script src="JS/highlight.js"></script>
+  <script src="./JS/jQuery.js"></script>
+  <script src="./JS/highlight.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- Custom theme -->
 </head>
@@ -21,7 +21,7 @@
 <body class="light">
   <nav id="sidebar" class="sidebar">
     <ol class="chapter">
-      <li><a href="index.html">Stack e Heap</a></li>
+      <li><a href="#" class="active">Stack e Heap</a></li>
       <li>
         <ol class="section">
           <li><a href="#Teoria"><strong>1.</strong> Teoria</a></li>
@@ -31,12 +31,13 @@
               <li><a href="#Heap"><strong>1.2. </strong> Heap</a></li>
             </ol>
           </li>
-          <li><a href=""><strong>2.</strong> Pratica</a></li>
+          <li><a href="#Pratica"><strong>2.</strong> Pratica</a></li>
           <li>
             <ol class="section">
-              <li><a href=""><strong>2.1. </strong> Esempio 1</a></li>
-              <li><a href=""><strong>2.2. </strong> Esempio 2</a></li>
-              <li><a href=""><strong>2.3. </strong> Esempio Riassuntivo</a></li>
+              <li><a href="#EsempioStack"><strong>2.1. </strong> Esempio Stack</a></li>
+              <li><a href="#EsempioHeap"><strong>2.2. </strong> Esempio Heap</a></li>
+              <li><a href="#EsempioParametri"><strong>2.3. </strong> Esempio con parametri</a></li>
+              <li><a href="#EsempioComplesso"><strong>2.4. </strong> Esempio complesso</a></li>
             </ol>
           </li>
         </ol>
@@ -123,7 +124,7 @@
             <p>Alla fine del programma la memoria mamma mia verrà liberata automaticamente dalla JVM</p>
           </section>
 
-          <section id="Esempio2">
+          <section id="EsempioStack">
             <h2>Esempio 2</h2>
             <p>Guardiamo step-by-step le righe del programma e osserviamo come cambia lo stack ad ogni passaggio.</p>
             <pre><code class="language-java">public class Main {
@@ -200,7 +201,7 @@
             </table>
           </section>
 
-          <section id="Heap">
+          <section id="EsempioHeap">
   <!-- TODO HEAP -->
             <h2>TODO: Heap</h2>
             <p>Se dobbiamo passare dei dati ad una funzione by reference dobbiamo affidarci all'heap</p>
@@ -236,7 +237,7 @@
             <p>Di solito l'indirizzo dell'heap parte dalla fine della RAM quindi ipotizzando di avere 1GB di RAM si parte dall'indirizzo 2^32-1 e scende verso 0x00000000.</p>
           </section>
             
-          <section id="Parametri">
+          <section id="EsempioParametri">
             <h2>Parametri</h2>
             <p>Quando passiamo un parametro ad una funzione, questo parametro viene copiato nella memoria dello stack. </p>
             <pre><code class="language-java">public class Main {
@@ -283,9 +284,39 @@ public static void foo(int x)
             <p>TODO: fare esempio</p>
           </section>
 
-          <section id="">
+          <section id="EsempioComplesso">
             <h2>TODO: Fare esempio complesso</h2>
             <p>boh</p>
+            <pre><code class="language-java">public class Main {
+
+  public static void main(String[] args) {
+      int h = 3;
+      int i = 20;
+      int j = h;
+
+      foo(j);
+  }
+
+  public static void foo(int x) {
+      int y = 10;
+      int z = y;
+
+      baz(z);
+      bar(x, z);
+  }
+
+  public static void bar(int a, int b) {
+      int c = 5;
+      Integer d = new Integer(5);
+      int e = d;
+
+      baz(e);
+  }
+
+  public static void baz(int f) {
+      int g = 100;
+  }
+}</code></pre>
           </section>
 
         </main>

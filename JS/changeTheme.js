@@ -4,10 +4,10 @@ function changeTheme()
     var theme;
     var previousTheme = $('body').get(0).className;
     var stylesheets = {
-        // TODO: Usare jQuery per selezionare gli stili
-        ayuHighlight: document.querySelector("[href=\"../CSS/ayu-highlight.css\"]"),
-        highlight: document.querySelector("[href=\"../CSS/highlight.css\"]"),
+        highlight: $("[href$=\"CSS/highlight.css\"]")[0],
+        ayuHighlight: $("[href$=\"CSS/ayu-highlight.css\"]")[0],
     };
+    console.log(stylesheets);
     if(previousTheme == "ayu")
     {
         theme = "light";
@@ -19,7 +19,6 @@ function changeTheme()
         stylesheets.ayuHighlight.disabled = false;
         stylesheets.highlight.disabled = true;
     }
-    console.log($("#syntax").attr("href"));
     document.body.className = theme;
     html.classList.remove(previousTheme);
     html.classList.add(theme);
